@@ -1,6 +1,6 @@
 # Vue
 
-## Vue 테스트
+## Vue 테스트 실행
 1. [node.js](https://nodejs.org/) (v14.15.4) 설치 후,  
     작업 할 폴더에 파일들 넣고 **VSCode** 실행 → 작업 폴더를 해당 폴더로 설정 후 **[ctrl+\`]** 로 터미널 열기  
     (VSCode 없이 **cmd** 창에서 작업할 경우 : 폴더 내에서 [shift+마우스 우클릭] → '여기에 powerShell 창 열기' 실행 → `cmd` 입력 후 엔터)
@@ -23,3 +23,13 @@
     ```
     >npm run serve
     ```
+6. `npm run build` 로 빌드 실행
+    ```
+    >npm run build
+    ```
+
+
+
+## Note
+* /public 폴더의 _web.config_ 파일은 IIS 서버 설정 파일임. (IIS URLRewrite 설치 필수)  
+  *참조 : https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
