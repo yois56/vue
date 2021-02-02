@@ -1,0 +1,55 @@
+.tablist {
+	background: #fff;
+	border-bottom: 1px solid $color-primary;
+
+	& >li {
+		display: inline-block;
+
+		&.active {
+			border-bottom: 4px solid;
+			color: $color-primary;
+			font-weight: $fw-medium;
+		}
+		&.disabled {
+			opacity: .5;
+		}
+		& >a,
+		& >button,
+		& >span {
+			display: inline-block;
+			padding: rem(6px 20px);
+		}
+		& >a:hover,
+		& >button:hover {
+			color: $color-primary;
+		}
+	}
+}
+
+.tablist-sticky {
+	&.active {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+}
+
+.tabpanel {
+	background: #fff;
+	padding: rem(20px);
+	outline: 0;
+
+	&.hidden {
+		display: none;
+	}
+}
+
+
+/* darkmode */
+html.dark {
+	& .tablist,
+	& .tabpanel {
+		background: invert(#fff, 80%);
+	} 
+}
