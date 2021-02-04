@@ -1,18 +1,32 @@
+const classNamePattern = function (val) {
+	return new RegExp('(?:^|\\s)'+ val + '(?:\\s|$)', 'g');
+}
+
 const commonUI = {};
 commonUI.install = function (Vue) {
-	Vue.prototype.$uiElClassAdd = function (elem, val) {
-		if (elem.className === '') {
-			elem.className = val;
-		} else {
-			elem.className += ' ' + val;
+	// manipulate ClassName (add/remove/replace)
+	Vue.prototype.$uiRefClass = {
+		add: function (elem, val) {
+			if (!classNamePattern(val).test(elem.className)) {
+				if (elem.className === '') {
+					elem.className = val;
+				} else {
+					elem.className += ' ' + val;
+				}
+			}
+		},
+		remove: function (elem, val) {
+			elem.className = elem.className.replace(classNamePattern(val), '');
+		},
+		replace: function (elem, oldVal, newVal) {
+			if (classNamePattern(oldVal).test(elem.className)) {
+				this.remove(elem, oldVal);
+				this.add(elem, newVal);
+			}
 		}
 	}
 	
-	Vue.prototype.$uiElClassRemove = function (elem, val) {
-		const pattern = new RegExp('(?:^|\\s)'+ val + '(?:\\s|$)', 'g');
-		elem.className = elem.className.replace(pattern, '');
-	}
-	
+	// Toggle ClassName
 	Vue.prototype.$uiToggleClass = function (event) {
 		if (event.target.classList.contains('active')) {
 			event.target.classList.remove('active');
@@ -21,12 +35,12 @@ commonUI.install = function (Vue) {
 		}
 	}
 
+	// Sticky Tab
 	Vue.prototype.$uiScrollSticky = function (stickyTab) {
 		const posTop = stickyTab.offsetTop;
 
 		window.onscroll = onScrollAction;
-		document.ontouchmove = onScrollAction; // for mobile
-		
+		document.ontouchmove = onScrollAction; // for Mobile
 		function onScrollAction() {
 			const scrTop = window.pageYOffset;
 			// document.querySelector('.console').textContent = `${scrTop}, ${posTop}`;
@@ -42,8 +56,8 @@ commonUI.install = function (Vue) {
 		}
 		onScrollAction();
 
-		// tab click
-		stickyTab.querySelectorAll('a').forEach(tabA => {
+		// click tab
+		stickyTab.querySelectorAll('a').forEach(function(tabA) {
 			tabA.addEventListener('click', function() {
 				if (stickyTab.classList.contains('active')) {
 					window.scrollTo(0, posTop);

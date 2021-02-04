@@ -2,7 +2,7 @@
 	<pages-layout class="about-page"><!-- div#wrap 에 클래스 추가 필요할 경우 class="클래스네임" 추가 -->
 		<h1 class="page-tit">About.vue</h1>
 
-		<div class="tablist-sticky">
+		<div class="tablist-sticky" ref="stickyTab">
 			<tab-list><!-- ul.tablist 에 클래스 추가 필요할 경우 class="클래스네임" 추가 -->
 				<tab url="#tabView1" active>TAB1</tab><!-- ul.tablist >li 에 클래스 추가 필요할 경우 class="클래스네임" 추가 -->
 				<tab url="#tabView2">TAB2</tab>
@@ -50,11 +50,11 @@
 			TabPanel,
 		},
 		mounted () {
-			this.$uiElClassAdd(document.querySelector('html'), 'dark'); // html 요소에 클래스 추가
-			this.$uiScrollSticky(document.querySelector('.tablist-sticky'));
+			this.$uiRefClass.add(document.querySelector('html'), 'dark'); // html 요소에 클래스 추가
+			this.$uiScrollSticky(this.$refs.stickyTab);	// ref 속성으로 DOM 요소 접근
 		},
 		destroyed () {
-			this.$uiElClassRemove(document.querySelector('html'), 'dark'); // html 요소에 클래스 추가 (html 요소는 DOM이 동적으로 랜더링 되지 않는 영역이기 때문에 추가 - 라우팅과 관련)
+			this.$uiRefClass.remove(document.querySelector('html'), 'dark'); // html 요소에 클래스 추가 (html 요소는 DOM이 동적으로 랜더링 되지 않는 영역이기 때문에 추가 - 라우팅과 관련)
 		},	
 	};
 </script>

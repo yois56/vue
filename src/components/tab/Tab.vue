@@ -51,7 +51,7 @@
 					
 					// tab
 					if (tabNav.nodeName === 'UL') {
-						tabNav.querySelectorAll('li').forEach(tabItems => {
+						tabNav.querySelectorAll('li').forEach(function(tabItems) {
 							tabItems.classList.remove('active');
 							tabItems.children[0].setAttribute('aria-selected', false);
 						});
@@ -60,7 +60,7 @@
 					eTarget.setAttribute('aria-selected', true);
 					
 					// tabpanel
-					for (let sibling of tabPanel.parentNode.children) {
+					for (let sibling of tabPanel.parentNode.children) { // ES6
 						if (sibling.classList.contains('tabpanel')) {
 							sibling.classList.add("hidden");
 						}
