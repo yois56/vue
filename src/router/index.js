@@ -38,6 +38,11 @@ const router = new VueRouter({
 			component: () => import('../views/Todo.vue'),
 		},
 		{
+			path: '/code-sample',
+			name: 'CodeSample',
+			component: () => import('../views/CodeSample.vue'),
+		},
+		{
 			path: '*',
 			component: () => import('../views/ErrorPage404.vue')
 		},

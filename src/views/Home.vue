@@ -8,13 +8,18 @@
 		
 		<div class="row">
 			<button class="btn-type1" @click="$uiToggleClass">Click - Method Type1</button>
-			<button class="btn-type1" :class="{active: isActive}" @click="toggleActive">Click - Method Type2</button>
+			<button class="btn-type1" :class="{active: isActive}" @click="isActive = !isActive">Click - Method Type2</button>
+
+			<button class="btn-type1" ref="btn" @click="$event.currentTarget.classList.toggle('active')">Click - Method Type3</button>
+			<div class="textbox" :class="[isActive ? 'active' : '']">
+				text
+			</div>
+		
 		</div>
 	</pages-layout>
 </template>
 
 <script>
-
 	export default {
 		name: 'Home',
 		data () {
@@ -23,10 +28,18 @@
 			}
 		},
 		methods: {
-			toggleActive () {
-				this.isActive = !this.isActive;
-			},
+			// toggleActive () {
+			// 	this.isActive = !this.isActive;
+			// },
+
+			console () {
+				console.log(this.$refs.btn.classList.contains('active'));
+				
+			}
 		}
 		
 	};
 </script>
+<style scoped>
+	.textbox.active { color:red; }
+</style>
