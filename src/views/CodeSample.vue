@@ -29,21 +29,23 @@
 
 
 
-    <swiper class="swiper1" :options="swiperOptions" ref="mySwiper">
-      <swiper-slide>Slide 1</swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide>
-      <swiper-slide>Slide 3</swiper-slide>
-      <swiper-slide>Slide 4</swiper-slide>
-      <swiper-slide>Slide 5</swiper-slide>
-      <swiper-slide>Slide 6</swiper-slide>
-      <swiper-slide>Slide 7</swiper-slide>
-      <swiper-slide>Slide 8</swiper-slide>
-      <swiper-slide>Slide 9</swiper-slide>
-      <swiper-slide>Slide 10</swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
-    </swiper>
+      <swiper class="swiper" :options="swiperOptions">
+        <swiper-slide>Slide 1</swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+        <swiper-slide>Slide 4</swiper-slide>
+        <swiper-slide>Slide 5</swiper-slide>
+        <swiper-slide>Slide 6</swiper-slide>
+        <swiper-slide>Slide 7</swiper-slide>
+        <swiper-slide>Slide 8</swiper-slide>
+        <swiper-slide>Slide 9</swiper-slide>
+        <swiper-slide>Slide 10</swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
+      </swiper>
+
+      
 
 		
 	</pages-layout>
@@ -87,11 +89,6 @@
 			}
 		},
 
-    updated () {
-      if (this.uiIsActiveFilter === true) {
-        document.querySelector('#layer').style.color = 'red';
-      }
-    },
 
 		methods: {
       layerShow: function () {
@@ -103,65 +100,21 @@
        
       },
 
-
-			// --------
-      // 진입
-      // --------
-      beforeEnter: function (el) {
-        console.log(el, 'beforeEnter');
-        el.style.opacity = 0;
-        el.style.height = 0;
-      },
-      // done 콜백은 CSS와 함께 사용할 때 선택 사항입니다.
-      enter: function (el) {
-        console.log(el, 'enter');
-        el.style.opacity = 1;
-        el.style.height = 'auto';
-        el.style.transition = 'all .3s';
-      },
-      afterEnter: function (el) {
-        console.log(el, 'afterEnter');
-        el.style.opacity = 1;
-        el.style.height = 'auto';
-      },
-      enterCancelled: function (el) {
-        console.log(el, 'enterCancelled');
-        el.style.opacity = 1;
-        el.style.height = 'auto';
-      },
-      
-
-      // --------
-      // 진출
-      // --------
-      beforeLeave: function (el) {
-        console.log(el, 'beforeLeave');
-        el.style.opacity = 1;
-        el.style.height = 'auto';
-      },
-      // done 콜백은 CSS와 함께 사용할 때 선택 사항입니다.
-      leave: function (el) {
-        console.log(el, 'leave');
-        el.style.opacity = 0;
-        el.style.height = 0;
-        el.style.transition = 'all .3s';
-      },
-      afterLeave: function (el) {
-        console.log(el, 'afterLeave');
-        el.style.opacity = 0;
-        el.style.height = 0;
-      },
-      leaveCancelled: function (el) {
-        console.log(el, 'leaveCancelled');
-        el.style.opacity = 0;
-        el.style.height = 0;
-      }
 		},
     created () {
       
     },
+    updated () {
+      if (this.uiIsActiveFilter === true) {
+        document.querySelector('#layer').style.color = 'red';
+      }
+    },
     mounted() {
-      console.log('Swiper instances:', this.$refs.mySwiper)
+      //console.log('Swiper instances:', this.$refs.mySwiper)
+
+      if (this.uiIsActiveFilter === true) {
+        document.querySelector('#layer').style.color = 'red';
+      }
     }
 		
 	};
@@ -175,4 +128,5 @@
   .fade-leave-active {transition:all .15s;}
   .fade-enter, .fade-leave-to {opacity:0;}
   .fade-enter {transform:translateY(-10px);}
+
 </style>

@@ -15,5 +15,6 @@ module.exports = {
 	},
 	configureWebpack: {
 		devtool: 'source-map'	// 개발시 디버깅을 위해 소스맵 추가
-	}
+	},
+	transpileDependencies: [ 'dom7', 'swiper' ],	// swiper 관련 추가 - 하위 버전 트랜스파일 오류 때문에 추가 (IE, 모바일 브라우저)
 }
