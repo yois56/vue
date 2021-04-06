@@ -15,6 +15,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "swiper": "^5.3.7",
+    "velocity-animate": "^1.5.2",
     "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.2.0",
