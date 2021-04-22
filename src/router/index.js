@@ -6,8 +6,8 @@ import Home from '../views/Home';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-	mode: 'history',
-	// base: process.env.BASE_URL,
+	// mode: 'history',	// production 과 development 빌드 경로가 다를 경우 history 모드 사용하지 말 것
+	base: process.env.BASE_URL,	// production 과 development 빌드 경로가 다를 경우 추가
 	// linkActiveClass: 'is-active',
 	// linkExactActiveClass: 'is-active',
 	routes: [
