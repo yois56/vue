@@ -1,6 +1,6 @@
 // vue.config.js
 module.exports = {
-	publicPath: process.env.NODE_ENV === "production" ? "/vue/" : "/",	// 빌드 경로 설정
+	publicPath: process.env.NODE_ENV === "production" ? "./" : "/",	// 빌드 경로 설정
 	css: {
 		loaderOptions: { // 모든 컴포넌트에서 scss 전역 변수 및 mixin 사용할 수 있도록 preload (main.js 에서 import 한 CSS 보다 먼저 로드 됨)
 			scss: {
